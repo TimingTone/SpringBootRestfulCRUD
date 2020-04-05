@@ -55,7 +55,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <!--需要区分是员工修改还是添加；-->
             <form th:action="@{/stu}" method="post">
-                <!--发送put请求修改员工数据-->
+                <!--发送put请求修改学生数据-->
                 <!--
                 1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
                 2、页面创建一个post表单
@@ -63,6 +63,10 @@
                 -->
                 <input type="hidden" name="_method" value="put" th:if="${stu!=null}"/>
                 <input type="hidden" name="id" th:if="${stu!=null}" th:value="${stu.id}">
+                <div class="form-group" th:if="${stu==null}">
+                    <label>ID</label>
+                    <input name="id" type="text" class="form-control" placeholder="2018301103" th:value="${stu!=null}?${stu.id}">
+                </div>
                 <div class="form-group">
                     <label>LastName</label>
                     <input name="lastName" type="text" class="form-control" placeholder="zhangsan" th:value="${stu!=null}?${stu.lastName}">
@@ -86,12 +90,16 @@
                     <label>Faculty</label>
                     <!--提交的是系的id-->  <!--facu  dept    facus  depts-->
                     <select class="form-control" name="faculty.id">
-                        <option th:selected="${stu!=null}?${facu.id == stu.faculty.id}" th:value="${facu.id}" th:each="facu:${facus}" th:text="${facu.facultyName}">1</option>
+                        <option th:selected="${stu!=null}?${facu.id == stu.facultyID}" th:value="${facu.id}" th:each="facu:${facus}" th:text="${facu.facultyName}">1</option>
                     </select>
                 </div>
+<!--                <div class="form-group">-->
+<!--                    <label>Birth</label>-->
+<!--                    <input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${stu!=null}?${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}">-->
+<!--                </div>-->
                 <div class="form-group">
-                    <label>Birth</label>
-                    <input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${stu!=null}?${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}">
+                    <label>Age</label>
+                    <input name="age" type="text" class="form-control" placeholder="2018301103" th:value="${stu!=null}?${stu.age}">
                 </div>
                 <button type="submit" class="btn btn-primary" th:text="${stu!=null}?'修改':'添加'">添加</button>
             </form>

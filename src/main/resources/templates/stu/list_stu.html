@@ -63,7 +63,7 @@
 									<th>Email</th>
 									<th>Gender</th>
 									<th>Faculty</th>
-									<th>Birth</th>
+									<th>Age</th>
 									<th>操作</th>
 								</tr>
 							</thead>
@@ -73,8 +73,10 @@
 									<td>[[${stu.lastName}]]</td>
 									<td th:text="${stu.email}"></td>
 									<td th:text="${stu.gender}==0?'女':'男'"></td>
-									<td th:text="${stu.faculty.facultyName}"></td>
-									<td th:text="${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}"></td>
+<!--									<td th:text="${stu.faculty.facultyName}"></td>-->
+									<td th:text="${stu.gotFaculty().facultyName}"></td>
+<!--									<td th:text="${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
+									<td th:text="${stu.age}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/stu/}+${stu.id}">编辑</a>
 										<button th:attr="del_uri=@{/stu/}+${stu.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>

@@ -1,6 +1,11 @@
 package com.whiterose.springboot.entities;
 
+import com.whiterose.springboot.dao.IFacultyDao;
+import com.whiterose.springboot.dao.impl.FacultyDaoImpl;
+
 import java.util.Date;
+
+
 
 public class Student {
     private Integer id;
@@ -10,18 +15,32 @@ public class Student {
     //1 male, 0 female
     private Integer gender;
     private Faculty faculty;
-    private Date birth;
+//    private Date birth;
+    private Integer age;
+    //外键
+    private Integer facultyID;
+    IFacultyDao facultyDao = new FacultyDaoImpl();
 
-    public Student(Integer id, String lastName, String email, Integer gender, Faculty faculty) {
+
+    public Student(Integer id, String lastName, String email, Integer gender, Faculty faculty, Integer age) {
         super();
         this.id = id;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
         this.faculty = faculty;
-        this.birth = new Date();
+        this.age = age;
     }
 
+    public Student(Integer id, String lastName, String email, Integer gender, Integer facultyID, Integer age) {
+        super();
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.facultyID = facultyID;
+        this.age = age;
+    }
 
     @Override
     public String toString() {
@@ -30,8 +49,8 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                ", faculty=" + faculty +
-                ", birth=" + birth +
+                ", facultyID=" + facultyID +
+                ", age=" + age +
                 '}';
     }
 
@@ -54,12 +73,8 @@ public class Student {
         this.gender = gender;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
+    public void setFacultyID(Integer facultyID) {
+        this.facultyID = facultyID;
     }
 
     public Integer getId() {
@@ -78,11 +93,30 @@ public class Student {
         return gender;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public Integer getFacultyID() {
+        return facultyID;
     }
 
-    public Date getBirth() {
-        return birth;
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Faculty getFaculty() {
+       return faculty;
+    }
+
+    public Faculty gotFaculty(){
+        return facultyDao.queryFacultyByID(facultyID);
+    }
+
+
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+        this.facultyID = faculty.getId();
     }
 }
