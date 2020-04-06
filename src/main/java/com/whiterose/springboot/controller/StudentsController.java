@@ -25,7 +25,7 @@ public class StudentsController {
     IStudentDao studentDao = new StudentDaoImpl();
     IFacultyDao facultyDao = new FacultyDaoImpl();
 
-    //查询所有学生返回列表页面(GET请求方式)== 正确
+    //查询所有学生返回列表页面(GET请求方式)
     @GetMapping("/stus")
     public String list(Model model){
         Collection<Student> students = studentDao.queryAllStudents();
@@ -35,7 +35,7 @@ public class StudentsController {
         return "stu/list_stu";
     }
 
-    //进入学生添加页面  ==  正确
+    //进入学生添加页面
     @GetMapping("/stu")
     public String toAddPage(Model model){
         //查出部门并显示
@@ -53,7 +53,7 @@ public class StudentsController {
         return "redirect:/stus";
     }
 
-    //进入学生信息页面   == 正确
+    //进入学生信息页面
     @GetMapping("/stu/{id}")
     public String toEditStu(@PathVariable("id") Integer id, Model model){
         Student student = studentDao.queryStudentByID(id);
@@ -71,7 +71,7 @@ public class StudentsController {
         return "redirect:/stus";
     }
 
-    //学生删除     ==   正确
+    //学生删除
     @DeleteMapping("/stu/{id}")
     public String deleteStudent(@PathVariable("id") Integer id){
         studentDao.deleteStudentByID(id);
