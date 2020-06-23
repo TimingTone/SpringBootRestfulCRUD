@@ -35,12 +35,11 @@ public class GradeController {
         return "grd/add_grd";
     }
 
-    //提交学生添加
+    //提交学生成绩添加
     @PostMapping("/grd")
     public String AddGrd(Grade grade){
-//        System.out.println("保存的学生信息：" + student);
         gradeDao.save(grade);
-        //来到学生列表页面,转到list_stu页面
+        //来到学生成绩列表页面,转到list_stu页面
         return "redirect:/grds";
     }
 
@@ -49,20 +48,17 @@ public class GradeController {
     public String toEditStu(@PathVariable("id") Integer id, Model model){
         Grade grade = iGradeDao.queryGradeByID(id);
         model.addAttribute("grd",grade);
-
-//        Collection<Faculty> faculties = facultyDao.queryAllFaculties();
-//        model.addAttribute("facus", faculties);
         return "grd/add_grd";
     }
 
-    //学生修改
+    //学生成绩修改
     @PutMapping("/grd")
     public String updateStudent(Grade grade){
         gradeDao.save(grade);
         return "redirect:/grds";
     }
 
-    //学生删除
+    //学生成绩删除
     @DeleteMapping("/grd/{id}")
     public String deleteGrade(@PathVariable("id") Integer id){
         iGradeDao.deleteGradeByID(id);

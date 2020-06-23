@@ -33,7 +33,9 @@ public class StudentDaoImpl implements IStudentDao {
     //根据学号删除学生
     public boolean deleteStudentByID(int id){
         String sql = "delete from student where id=?";
+        String sql_grd = "delete from grade where id=?";
         Object[] params = {id};
+        DBUtil.executeUpdate(sql_grd,params);//由于外键，必须先删除学生成绩
         return DBUtil.executeUpdate(sql, params);
     }
 

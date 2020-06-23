@@ -1,7 +1,6 @@
 package com.whiterose.springboot.dao;
 
 
-
 import com.whiterose.springboot.entities.Student;
 
 import java.util.List;

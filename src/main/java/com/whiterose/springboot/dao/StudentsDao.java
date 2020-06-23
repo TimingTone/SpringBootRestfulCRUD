@@ -29,9 +29,12 @@ public class StudentsDao {
         IStudentDao studentDao = new StudentDaoImpl();
         student.setFacultyID(student.getFaculty().getId());
         student.setFaculty(FacultyDao.getFaculty(student.getFaculty().getId()));
-        //防止ID重复
-        studentDao.deleteStudentByID(student.getId());
-        studentDao.addStudent(student);
+        //防止ID重复(ID不为主键时）
+//        studentDao.deleteStudentByID(student.getId());
+//        studentDao.addStudent(student);
+
+        //ID为主键
+        studentDao.updateStudentByID(student.getId(), student);
     }
 
     //查询所有学生

@@ -7,9 +7,9 @@ import java.sql.*;
 public class DBUtil {
 
     final static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    final static String URL = "jdbc:mysql://localhost:3306/jpa";
-    final static String USER = "user";
-    final static String PSW = "password";
+    final static String URL = "jdbc:mysql://localhost:3306/jpa";//链接数据库表
+    final static String USER = "user";//数据库用户名
+    final static String PSW = "password";//数据库密码
     public static Connection conn = null;
     public static PreparedStatement pstmt = null;
     public static ResultSet rs = null;

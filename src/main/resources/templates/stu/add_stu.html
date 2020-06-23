@@ -64,19 +64,19 @@
                 <input type="hidden" name="_method" value="put" th:if="${stu!=null}"/>
                 <input type="hidden" name="id" th:if="${stu!=null}" th:value="${stu.id}">
                 <div class="form-group" th:if="${stu==null}">
-                    <label>ID</label>
+                    <label>学号</label>
                     <input name="id" type="text" class="form-control" placeholder="2018301103" th:value="${stu!=null}?${stu.id}">
                 </div>
                 <div class="form-group">
-                    <label>LastName</label>
+                    <label>姓名</label>
                     <input name="lastName" type="text" class="form-control" placeholder="zhangsan" th:value="${stu!=null}?${stu.lastName}">
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>邮箱</label>
                     <input name="email" type="email" class="form-control" placeholder="zhangsan@atguigu.com" th:value="${stu!=null}?${stu.email}">
                 </div>
                 <div class="form-group">
-                    <label>Gender</label><br/>
+                    <label>性别</label><br/>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${stu!=null}?${stu.gender==1}">
                         <label class="form-check-label">男</label>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Faculty</label>
+                    <label>专业（系）</label>
                     <!--提交的是系的id-->  <!--facu  dept    facus  depts-->
                     <select class="form-control" name="faculty.id">
                         <option th:selected="${stu!=null}?${facu.id == stu.facultyID}" th:value="${facu.id}" th:each="facu:${facus}" th:text="${facu.facultyName}">1</option>
@@ -98,7 +98,7 @@
 <!--                    <input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${stu!=null}?${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}">-->
 <!--                </div>-->
                 <div class="form-group">
-                    <label>Age</label>
+                    <label>年龄</label>
                     <input name="age" type="text" class="form-control" placeholder="2018301103" th:value="${stu!=null}?${stu.age}">
                 </div>
                 <button type="submit" class="btn btn-primary" th:text="${stu!=null}?'修改':'添加'">添加</button>
