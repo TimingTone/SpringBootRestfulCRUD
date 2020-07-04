@@ -1,5 +1,6 @@
 package com.whiterose.springboot.dao;
 
+import com.whiterose.springboot.entities.Grade;
 import com.whiterose.springboot.entities.User;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface IUserDao {
     public boolean deleteUserByUno(String uno);
 
     public List<User> queryAllUser();
+
+    public boolean updateUserByUno(String Uno, User user);
 
     public boolean checkUser(String uno, String upwd);
 }

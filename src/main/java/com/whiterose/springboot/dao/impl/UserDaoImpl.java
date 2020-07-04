@@ -103,7 +103,7 @@ public class UserDaoImpl implements IUserDao {
         }
     }
 
-    ////判定当输入信息正确，返回true
+    //判定当输入信息正确，返回true
     public boolean checkUser(String uno, String upwd) {
 
         if (isExist(uno)) {

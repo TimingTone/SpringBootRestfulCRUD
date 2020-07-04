@@ -53,7 +53,7 @@ public class UserController {
     //用户密码修改
     @PutMapping("/reg")
     public String updateUser(User user){
-        userDao.add(user);
+        userDao.update(user);
         return "redirect:/regs";
     }
 
