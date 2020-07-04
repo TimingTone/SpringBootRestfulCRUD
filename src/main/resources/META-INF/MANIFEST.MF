@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Main-Class: com.whiterose.springboot.SpringBoot04WebRestfulcrudApplicati
+ on
+Class-Path: library/spring-beans-4.3.14.RELEASE.jar library/spring-boot-
+ starter-1.5.10.RELEASE.jar library/snakeyaml-1.17.jar library/popper.js
+ -1.11.1.jar library/spring-expression-4.3.14.RELEASE.jar library/bootst
+ rap-4.0.0.jar library/jackson-databind-2.8.10.jar library/jul-to-slf4j-
+ 1.7.25.jar library/thymeleaf-expression-processor-1.1.3.jar library/mys
+ ql-connector-java-8.0.19.jar library/validation-api-1.1.0.Final.jar lib
+ rary/spring-aop-4.3.14.RELEASE.jar library/thymeleaf-spring4-3.0.9.RELE
+ ASE.jar library/spring-web-4.3.14.RELEASE.jar library/spring-boot-autoc
+ onfigure-1.5.10.RELEASE.jar library/spring-context-4.3.14.RELEASE.jar l
+ ibrary/spring-core-4.3.14.RELEASE.jar library/logback-classic-1.1.11.ja
+ r library/logback-core-1.1.11.jar library/hibernate-validator-5.3.6.Fin
+ al.jar library/spring-boot-1.5.10.RELEASE.jar library/thymeleaf-layout-
+ dialect-2.2.2.jar library/jcl-over-slf4j-1.7.25.jar library/spring-boot
+ -starter-tomcat-1.5.10.RELEASE.jar library/library/jquery-3.3.1.jar lib
+ rary/attoparser-2.0.4.RELEASE.jar library/tomcat-embed-el-8.5.27.jar li
+ brary/spring-boot-starter-web-1.5.10.RELEASE.jar library/jboss-logging-
+ 3.3.1.Final.jar library/unbescape-1.1.5.RELEASE.jar library/groovy-2.4.
+ 13.jar library/tomcat-annotations-api-8.5.27.jar library/thymeleaf-3.0.
+ 9.RELEASE.jar library/spring-boot-starter-logging-1.5.10.RELEASE.jar li
+ brary/tomcat-embed-websocket-8.5.27.jar library/classmate-1.3.4.jar lib
+ rary/jackson-core-2.8.10.jar library/spring-webmvc-4.3.14.RELEASE.jar l
+ ibrary/slf4j-api-1.7.25.jar library/tomcat-embed-core-8.5.27.jar librar
+ y/jackson-annotations-2.8.0.jar library/spring-boot-starter-thymeleaf-1
+ .5.10.RELEASE.jar library/log4j-over-slf4j-1.7.25.jar
+

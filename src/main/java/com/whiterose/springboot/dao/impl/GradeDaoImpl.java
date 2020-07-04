@@ -28,7 +28,7 @@ public class GradeDaoImpl implements IGradeDao {
 
     //根据学号删除学生
     public boolean deleteGradeByID(int id){
-        String sql = "delete from Grade where id=?";
+        String sql = "delete from grade where id=?";
         Object[] params = {id};
         return DBUtil.executeUpdate(sql, params);
     }

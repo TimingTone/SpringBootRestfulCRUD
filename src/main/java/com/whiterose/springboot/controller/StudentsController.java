@@ -48,7 +48,7 @@ public class StudentsController {
     @PostMapping("/stu")
     public String AddStu(Student student){
 //        System.out.println("保存的学生信息：" + student);
-        studentsDao.save(student);
+        studentsDao.add(student);
         //来到学生列表页面,转到list_stu页面
         return "redirect:/stus";
     }
@@ -67,7 +67,7 @@ public class StudentsController {
     //学生修改
     @PutMapping("/stu")
     public String updateStudent(Student student){
-        studentsDao.save(student);
+        studentsDao.update(student);
         return "redirect:/stus";
     }
 

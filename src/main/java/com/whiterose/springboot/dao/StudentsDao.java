@@ -21,7 +21,9 @@ public class StudentsDao {
 
     private static Integer initId = 1006;
 
-    public void save(Student student){
+
+    //修改学生信息
+    public void update(Student student){
         if(student.getId() == null){
             student.setId(initId++);
         }
@@ -29,12 +31,21 @@ public class StudentsDao {
         IStudentDao studentDao = new StudentDaoImpl();
         student.setFacultyID(student.getFaculty().getId());
         student.setFaculty(FacultyDao.getFaculty(student.getFaculty().getId()));
-        //防止ID重复(ID不为主键时）
-//        studentDao.deleteStudentByID(student.getId());
-//        studentDao.addStudent(student);
-
-        //ID为主键
         studentDao.updateStudentByID(student.getId(), student);
+    }
+
+    //增加学生
+    public void add(Student student){
+        if(student.getId() == null){
+            student.setId(initId++);
+        }
+
+        IStudentDao studentDao = new StudentDaoImpl();
+        student.setFacultyID(student.getFaculty().getId());
+        student.setFaculty(FacultyDao.getFaculty(student.getFaculty().getId()));
+        //防止ID重复
+        studentDao.deleteStudentByID(student.getId());
+        studentDao.addStudent(student);
     }
 
     //查询所有学生
