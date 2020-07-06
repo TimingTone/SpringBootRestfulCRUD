@@ -60,10 +60,14 @@
 								<tr>
 									<th>学号</th>
 									<th>姓名</th>
+									<th>籍贯</th>
 									<th>邮箱</th>
 									<th>性别</th>
 									<th>专业</th>
+									<th>出生日期</th>
 									<th>年龄</th>
+									<th>学分</th>
+									<th>是否毕业</th>
 									<th>操作</th>
 								</tr>
 							</thead>
@@ -71,12 +75,15 @@
 								<tr th:each="stu:${stus}">
 									<td th:text="${stu.id}"></td>
 									<td>[[${stu.lastName}]]</td>
+									<td th:text="${stu.address}"></td>
 									<td th:text="${stu.email}"></td>
 									<td th:text="${stu.gender}==0?'女':'男'"></td>
 <!--									<td th:text="${stu.faculty.facultyName}"></td>-->
 									<td th:text="${stu.gotFaculty().facultyName}"></td>
-<!--									<td th:text="${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
+									<td th:text="${#dates.format(stu.birth, 'yyyy-MM-dd HH:mm')}"></td>
 									<td th:text="${stu.age}"></td>
+									<td th:text="${stu.grade}"></td>
+									<td th:text="${stu.state}==0?'否':'是'"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/stu/}+${stu.id}">编辑</a>
 										<button th:attr="del_uri=@{/stu/}+${stu.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>

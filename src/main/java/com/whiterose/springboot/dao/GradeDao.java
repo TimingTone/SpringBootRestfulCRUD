@@ -1,7 +1,9 @@
 package com.whiterose.springboot.dao;
 
 import com.whiterose.springboot.dao.impl.GradeDaoImpl;
+import com.whiterose.springboot.dao.impl.StudentDaoImpl;
 import com.whiterose.springboot.entities.Grade;
+import com.whiterose.springboot.entities.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,9 +20,15 @@ public class GradeDao {
             grade.setId(initId++);
         }
 
-        IGradeDao gradeDao = new GradeDaoImpl();
-        gradeDao.deleteGradeByID(grade.getId());
-        gradeDao.addGrade(grade);
+        IStudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.queryStudentByID(grade.getId());
+        //判断是否毕业
+        if(student.getState() == 0) {
+            //没有毕业，可以修改
+            IGradeDao gradeDao = new GradeDaoImpl();
+            gradeDao.deleteGradeByID(grade.getId());
+            gradeDao.addGrade(grade);
+        }
     }
 
     public Collection<Grade> getAll(){return grade.values();}

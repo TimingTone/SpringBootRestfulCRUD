@@ -25,8 +25,8 @@ public class StudentDaoImpl implements IStudentDao {
 
     //增加学生
     public boolean addStudent(Student student){
-        String sql = "insert into student values(?, ?, ?, ?, ?, ?)";
-        Object[] params = {student.getId(), student.getLastName(), student.getEmail(), student.getGender(), student.getFacultyID(), student.getAge()};
+        String sql = "insert into student values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] params = {student.getId(), student.getLastName(), student.getAddress(), student.getEmail(), student.getGender(), student.getFacultyID(), student.getBirth(),  student.getAge(), student.getGrade(), student.getState()};
         return DBUtil.executeUpdate(sql, params);
     }
 
@@ -42,8 +42,8 @@ public class StudentDaoImpl implements IStudentDao {
 
     //根据学号修改学生信息(根据学号找人然后修改信息)
     public boolean updateStudentByID(int id, Student student){
-        String sql = "update student set lastname=?, email=?, gender=?, facultyID=?, age=? where id=?";
-        Object[] params = {student.getLastName(), student.getEmail(), student.getGender(), student.getFacultyID(), student.getAge(), id};
+        String sql = "update student set lastname=?, address=?, email=?, gender=?, facultyID=?, birth=?, age=?, grade=?, state=? where id=?";
+        Object[] params = {student.getLastName(), student.getAddress(), student.getEmail(), student.getGender(), student.getFacultyID(), student.getBirth(),  student.getAge(), student.getGrade(), student.getState(), id};
         return DBUtil.executeUpdate(sql, params);
     }
 
@@ -60,11 +60,15 @@ public class StudentDaoImpl implements IStudentDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String lastname = rs.getString("lastname");
+                String address = rs.getString("address");
                 String email = rs.getString("email");
                 int gender = rs.getInt("gender");
+                Date birth = rs.getDate("birth");
                 int age = rs.getInt("age");
+                Double grade = rs.getDouble("grade");
+                Integer state = rs.getInt("state");
                 Integer facultyID = rs.getInt("facultyID");
-                student = new Student(id, lastname, email, gender, facultyID, age);
+                student = new Student(id, lastname, address, email, gender, facultyID, birth, age, grade, state);
                 students.add(student);
             }
             return students;
@@ -91,11 +95,15 @@ public class StudentDaoImpl implements IStudentDao {
             rs = DBUtil.executeQuery(sql, params);
             if (rs.next()) {
                 String lastname = rs.getString("lastname");
+                String address = rs.getString("address");
                 String email = rs.getString("email");
                 int gender = rs.getInt("gender");
+                Date birth = rs.getDate("birth");
                 int age = rs.getInt("age");
+                Double grade = rs.getDouble("grade");
+                Integer state = rs.getInt("state");
                 Integer facultyID = rs.getInt("facultyID");
-                student = new Student(id, lastname, email, gender, facultyID, age);
+                student = new Student(id, lastname, address, email, gender, facultyID, birth, age, grade, state);
             }
             return student;
         } catch (SQLException se) {

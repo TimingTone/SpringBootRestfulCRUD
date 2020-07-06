@@ -2,7 +2,9 @@ package com.whiterose.springboot.controller;
 
 import com.whiterose.springboot.dao.*;
 import com.whiterose.springboot.dao.impl.GradeDaoImpl;
+import com.whiterose.springboot.dao.impl.StudentDaoImpl;
 import com.whiterose.springboot.entities.Grade;
+import com.whiterose.springboot.entities.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ public class GradeController {
     @Autowired
     GradeDao gradeDao;
     IGradeDao iGradeDao = new GradeDaoImpl();
+    IStudentDao iStudentDao = new StudentDaoImpl();
 
     //查询所有学生成绩返回列表页面(GET请求方式)
     @GetMapping("/grds")
@@ -61,7 +64,9 @@ public class GradeController {
     //学生成绩删除
     @DeleteMapping("/grd/{id}")
     public String deleteGrade(@PathVariable("id") Integer id){
-        iGradeDao.deleteGradeByID(id);
+        Student student = iStudentDao.queryStudentByID(id);
+        if(student.getState() == 0)
+            iGradeDao.deleteGradeByID(id);
         return "redirect:/grds";
     }
 
